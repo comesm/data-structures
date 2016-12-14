@@ -14,8 +14,8 @@ var Stack = function() {
     if (size !== 0) {
       size--;
     }
-    var temp = Object.keys(storage)[0];
-    delete storage[Object.keys(storage)[0]];
+    var temp = Object.keys(storage)[Object.keys(storage).length - 1];
+    delete storage[Object.keys(storage)[Object.keys(storage).length - 1]];
     return temp;
   };
 
