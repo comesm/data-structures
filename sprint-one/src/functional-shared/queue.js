@@ -15,10 +15,21 @@ var queueMethods = {
     return this.length;
   },
 
-  enqueue: function() { 
+  enqueue: function(value) {
+    this.storage[value] = value; 
     this.length++;
   },
-  dequeue: function() { }
+  dequeue: function() {
+    var temp = this.storage[Object.keys(this.storage)[0]];
+    delete this.storage[Object.keys(this.storage)[0]];
+
+
+
+    if (this.length !== 0) {
+      this.length--;
+    }
+    return temp;
+  }
 
 };
 
