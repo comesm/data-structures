@@ -22,4 +22,7 @@ stackMethods.pop = function() {
   if (this.length !== 0) {
     this.length--;
   }
+  var temp = this.storage[Object.keys(this.storage)[0]];
+  delete this.storage[Object.keys(this.storage)[0]];
+  return temp;
 };
