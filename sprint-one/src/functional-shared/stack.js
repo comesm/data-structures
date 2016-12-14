@@ -14,7 +14,15 @@ var stackMethods = {
     this.length++;
     this.storage[value] = value;
   },
-  pop: function() {}
+  pop: function() {
+    if ( this.length !== 0 ) {
+      this.length--;
+    }
+    var temp = this.storage[Object.keys(this.storage)[Object.keys(this.storage).length - 1]];
+    console.log(this.storage);
+    delete this.storage[Object.keys(this.storage)[this.storage.length - 1]];
+    return temp;
+  }
 };
 
 
