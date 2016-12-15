@@ -22,6 +22,9 @@ Graph.prototype.contains = function(node) {
 Graph.prototype.removeNode = function(node) {
   for ( var key in this.storage ) {
     if ( key === JSON.stringify(node) ) {
+      for ( var i = 0; i < this.storage[key].length; i++) {
+        this.removeEdge(node, this.storage[key][i]);
+      }
       delete this.storage[key];
     }
   }
