@@ -29,14 +29,22 @@ Graph.prototype.removeNode = function(node) {
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  for ( key in this.storage ) {
+    if ( key === JSON.stringify(fromNode)) {
+      if ( this.storage[key].includes(toNode) ) {
+        return true;
+      }
+    }
+  }
+  return false;
 };
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
   for ( key in this.storage ) {
-    if ( key === fromNode ) {
+    if ( key === JSON.stringify(fromNode)) {
       this.storage[key].push(toNode);
-    } else if ( key === toNode ) {
+    } else if ( key === JSON.stringify(toNode)) {
       this.storage[key].push(fromNode);
     }
   }
