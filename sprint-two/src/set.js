@@ -20,6 +20,11 @@ setPrototype.contains = function(item) {
 };
 
 setPrototype.remove = function(item) {
+  for (var key in this._storage) {
+    if (key === item) {
+      delete this._storage[key];
+    }
+  }
 };
 
 /*
