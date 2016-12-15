@@ -15,4 +15,11 @@ Queue.prototype.enqueue = function(value) {
   this.storage[value] = value;
 };
 
+Queue.prototype.dequeue = function() {
+  if(this.length !== 0) {
+    this.length--;
+  }
+
+};
+
 
