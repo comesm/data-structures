@@ -14,7 +14,9 @@ Stack.prototype.push = function( value ) {
 };
 
 Stack.prototype.pop = function() {
-
+  if (this.length !== 0) {
+    this.length--;
+  }
 };
 
 
