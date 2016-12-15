@@ -16,7 +16,6 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  //debugger;
   if ( this.value === target) {
     return true;
   }
@@ -26,8 +25,9 @@ treeMethods.contains = function(target) {
     for ( var i = 0; i < childNodes.length; i++ ) {
       if ( childNodes[i].value === target ) {
         result = true;
+        return;
       } else if ( childNodes[i].children !== undefined ) {
-        searchChildren(childNodes[i]);
+        searchChildren(childNodes[i].children);
       }
     }
   };
