@@ -16,18 +16,23 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  //debugger;
+  if ( this.value === target) {
+    return true;
+  }
   var result = false;
-  var searchChildren = function( tree ) {
-    if ( tree.value === target) {
-      return true;
-    }
 
-    for ( var i = 0; i < tree.children.length; i++ ) {
-      result = searchChildren(tree.children[i]);
+  var searchChildren = function( childNodes ) {
+    for ( var i = 0; i < childNodes.length; i++ ) {
+      if ( childNodes[i].value === target ) {
+        result = true;
+      } else if ( childNodes[i].children !== undefined ) {
+        searchChildren(childNodes[i]);
+      }
     }
   };
 
-  searchChildren(this);
+  searchChildren(this.children);
   return result;
 };
 
