@@ -1,15 +1,21 @@
-
-
 // Instantiate a new graph
 var Graph = function() {
+  this.storage = {};
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
+  this.storage[node] = node;
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
+  for( var key in this.storage ) {
+    if( this.storage[key] === node ){
+      return true;
+    }
+  }
+  return false;
 };
 
 // Removes a node from the graph.
