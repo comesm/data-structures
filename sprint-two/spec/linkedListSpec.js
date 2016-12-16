@@ -9,6 +9,10 @@ describe('linkedList', function() {
     expect(linkedList).to.have.property('head');
     expect(linkedList).to.have.property('tail');
   });
+  it('empty linked list head and tail should be null', function() {
+    expect(linkedList.tail).to.equal(null);
+    expect(linkedList.head).to.equal(null);
+  });
 
   it('should have methods named "addToTail", "removeHead", and "contains"', function() {
     expect(linkedList.addToTail).to.be.a('function');
