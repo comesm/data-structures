@@ -9,12 +9,12 @@ var Tree = function(value) {
 };
 
 var treeMethods = {};
-
+//O(1)
 treeMethods.addChild = function(value) {
   var newChildTree = Tree(value);
   this.children.push(newChildTree);
 };
-
+//O(n)
 treeMethods.contains = function(target) {
   if ( this.value === target) {
     return true;

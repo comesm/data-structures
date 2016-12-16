@@ -5,11 +5,11 @@ var Set = function() {
 };
 
 var setPrototype = {};
-
+//O(1)
 setPrototype.add = function(item) {
   this._storage[item] = item;
 };
-
+//O(n)
 setPrototype.contains = function(item) {
   for (var key in this._storage) {
     if (key === item) {
@@ -18,7 +18,7 @@ setPrototype.contains = function(item) {
   }
   return false;
 };
-
+//O(n)
 setPrototype.remove = function(item) {
   for (var key in this._storage) {
     if (key === item) {

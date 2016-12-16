@@ -8,6 +8,8 @@ var BinarySearchTree = function(value) {
 
 var bsTreeMethods = {};
 
+//avg: O(log n)
+//worst: O(n)
 bsTreeMethods.insert = function(value) {
   var tree = this;
   var newTree = BinarySearchTree(value);
@@ -29,6 +31,8 @@ bsTreeMethods.insert = function(value) {
   checkTree(tree);    
 };
 
+//avg: O(log n)
+//worst: O(n)
 bsTreeMethods.contains = function( value ) {
   var tree = this;
   var result = false;
@@ -51,6 +55,7 @@ bsTreeMethods.contains = function( value ) {
   return result;
 };
 
+//O(n)
 bsTreeMethods.depthFirstLog = function(callback) {
   var tree = this;
 

@@ -4,11 +4,13 @@ var Graph = function() {
 };
 
 // Add a node to the graph, passing in the node's value.
+//O(1)
 Graph.prototype.addNode = function(node) {
   this.storage[node] = [];
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
+//O(n)
 Graph.prototype.contains = function(node) {
   for ( var key in this.storage ) {
     if ( key === JSON.stringify(node) ) {
@@ -19,6 +21,7 @@ Graph.prototype.contains = function(node) {
 };
 
 // Removes a node from the graph.
+//O(n*m) where m is the edge array of the node
 Graph.prototype.removeNode = function(node) {
   for ( var key in this.storage ) {
     if ( key === JSON.stringify(node) ) {
@@ -31,6 +34,7 @@ Graph.prototype.removeNode = function(node) {
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
+//O(n)
 Graph.prototype.hasEdge = function(fromNode, toNode) {
   for ( key in this.storage ) {
     if ( key === JSON.stringify(fromNode)) {
@@ -43,6 +47,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 };
 
 // Connects two nodes in a graph by adding an edge between them.
+//O(n)
 Graph.prototype.addEdge = function(fromNode, toNode) {
   for ( key in this.storage ) {
     if ( key === JSON.stringify(fromNode)) {
@@ -54,8 +59,8 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 };
 
 // Remove an edge between any two specified (by value) nodes.
+//O(n)
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-
   for (var key in this.storage) {
     if(key === JSON.stringify(fromNode)) {
       if(this.storage[key].includes(toNode)) {
@@ -73,6 +78,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 };
 
 // Pass in a callback which will be executed on each node of the graph.
+//O(n)
 Graph.prototype.forEachNode = function(cb) {
   for (var key in this.storage) {
     cb(parseInt(key));  

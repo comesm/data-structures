@@ -3,6 +3,7 @@ var LinkedList = function() {
   list.head = null;
   list.tail = null;
 
+  //o(1)
   list.addToTail = function(value) {
     var newNode = Node(value);
     if ( list.head === null ) {
@@ -12,9 +13,9 @@ var LinkedList = function() {
       list.tail.next = newNode;
       list.tail = newNode;
     }
-
   };
 
+  //o(1)
   list.removeHead = function() {
     if (list.head === list.tail) {
       var temp = list.head;
@@ -28,6 +29,7 @@ var LinkedList = function() {
     return temp;
   };
 
+  //0(n)
   list.contains = function(target) {
     var currentNode = list.head;
     while (currentNode !== null) {

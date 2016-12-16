@@ -2,7 +2,7 @@ var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
 };
-
+//O(1)
 HashTable.prototype.insert = function(k, v) {
   var obj = {};
   obj[k] = v;
@@ -15,13 +15,13 @@ HashTable.prototype.insert = function(k, v) {
     this._storage.set(index, temp);
   }
 };
-
+//O(1)
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var result = this._storage.get(index);
   return result[k];
 };
-
+//O(n)
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   this._storage.each(function(value, storageIndex, storageArray) {
