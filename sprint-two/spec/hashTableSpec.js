@@ -26,6 +26,7 @@ describe('hashTable', function() {
   it('should overwrite values that have the same key', function() {
     hashTable.insert('Bob', 'Loblaw');
     hashTable.insert('Bob', 'Barker');
+    console.log('29 ' + hashTable.retrieve('Bob'));
     expect(hashTable.retrieve('Bob')).to.equal('Barker');
   });
 
@@ -60,7 +61,7 @@ describe('hashTable', function() {
   });
 
   // (Advanced! Remove the extra "x" when you want the following tests to run)
-  xit ('should double in size when needed', function() {
+  it ('should double in size when needed', function() {
     _.each(people, function(person) {
       var firstName = person[0];
       var lastName = person[1];
