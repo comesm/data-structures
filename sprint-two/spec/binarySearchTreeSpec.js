@@ -20,6 +20,11 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.right.left.value).to.equal(6);
   });
 
+  it('should be able to insert a negative number', function() {
+    binarySearchTree.insert(-100000000);
+    expect(binarySearchTree.left.value).to.equal(-100000000);
+  });
+
   it('should have a working "contains" method', function() {
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
