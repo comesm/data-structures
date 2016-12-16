@@ -41,4 +41,10 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should add an empty child to the tree without breaking the data structure', function() {
+    tree.addChild(5);
+    tree.addChild();
+    expect(tree.contains(5)).to.equal(true);
+  });
+
 });
