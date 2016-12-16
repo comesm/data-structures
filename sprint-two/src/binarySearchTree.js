@@ -29,7 +29,27 @@ bsTreeMethods.insert = function(value) {
   checkTree(tree);    
 };
 
-bsTreeMethods.contains = function() {};
+bsTreeMethods.contains = function( value ) {
+  var tree = this;
+  var result = false;
+  var checkTree = function(currentTree) {
+    if ( currentTree.value === value ) {
+      result = true;
+      return;
+    }
+    if (currentTree.right === undefined && currentTree.left === undefined) {
+      result = false;
+      return;
+    }
+    if ( currentTree.value > value) {
+      checkTree(currentTree.left);
+    } else {
+      checkTree(currentTree.right);
+    }
+  };
+  checkTree(tree);
+  return result;
+};
 
 bsTreeMethods.depthFirstLog = function() {};
 
