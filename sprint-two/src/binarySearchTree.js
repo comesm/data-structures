@@ -51,7 +51,21 @@ bsTreeMethods.contains = function( value ) {
   return result;
 };
 
-bsTreeMethods.depthFirstLog = function() {};
+bsTreeMethods.depthFirstLog = function(callback) {
+  var tree = this;
+
+  var checkTree = function(currentTree) {
+    currentTree.value = callback(currentTree.value);
+    if (currentTree.right === undefined && currentTree.left !== undefined) {
+      checkTree(currentTree.left);
+    } else if (currentTree.right !== undefined && currentTree.left === undefined) {
+      checkTree(currentTree.right);
+    } else {
+      return;
+    }
+  };
+  checkTree(tree);
+};
 
 
 /*
