@@ -42,10 +42,20 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = function() { return 0; };
     hashTable.insert(v1, v1);
     hashTable.insert(v2, v2);
-    console.log('spec line 46', hashTable.retrieve(v1));
-    console.log('spec line 48', hashTable.retrieve(v2));
     expect(hashTable.retrieve(v1)).to.equal(v1);
     expect(hashTable.retrieve(v2)).to.equal(v2);    
+    window.getIndexBelowMaxForKey = oldHashFunction;
+  });
+
+  it('should not overwite existing values in hash when there is a collision', function() {
+    var val1 = 'FOO';
+    var val2 = 'BAR';
+    var oldHashFunction = window.getIndexBelowMaxForKey;
+    window.getIndexBelowMaxForKey = function() { return 0; };
+    hashTable.insert(val1, val1);
+    hashTable.insert(val2, val2);
+    expect(hashTable.retrieve(val1)).to.equal(val1);
+    expect(hashTable.retrieve(val2)).to.equal(val2);    
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
