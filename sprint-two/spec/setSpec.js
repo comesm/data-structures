@@ -24,4 +24,13 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should remove execute remove multiple times on empty data structure and not break the structure', function() {
+    set.add('Mel Gibson');
+    set.remove('Mel Gibson');
+    set.remove('Mel Gibson');
+    set.remove('Mel Gibson');
+    set.remove('Mel Gibson');
+    expect(set.contains('Mel Gibson')).to.equal(false);
+  });
+
 });
