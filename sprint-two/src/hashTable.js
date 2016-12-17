@@ -29,26 +29,30 @@ HashTable.prototype.insert = function(k, v) {
   }
   if (this.size / this._limit > 0.75) {
     //console.log(this.size / this._limit > 0.75);
-    this.resize();
+    this.resize('bigger');
   }
 };
 
-HashTable.prototype.resize = function() {
+HashTable.prototype.resize = function( resizeValue ) {
   // body...
-  var newLimit = this._limit * 2;
-  console.log(newLimit);
+  var newLimit;
+  if (resizeValue === 'bigger') {
+    console.log(resizeValue);
+    newLimit = this._limit * 2;  
+  } else { 
+    console.log('42fdsad');
+    newLimit = this._limit / 2;
+  }
+  console.log('line number 46 ' + newLimit); 
   var tempStorage = LimitedArray(newLimit);
   //create a temporary storage
-  console.log('42 ' + tempStorage);
   for (var i = 0; i < this._limit; i++) {
     if (this._storage.get(i) !== undefined) {
       var tuples = this._storage.get(i);
-      console.log(tuples);
       for ( var j = 0; j < tuples.length; j++) {
         var key = tuples[j][0];
         if (key === 'Alan') {
           //debugger;
-          console.log('line 51');
         }
         var value = tuples[j][1];
         var index = getIndexBelowMaxForKey(key, newLimit);
@@ -56,10 +60,15 @@ HashTable.prototype.resize = function() {
       }
     }
   }
-  
   this._limit = newLimit;
-  //set this._storage equal to new storage
-  this._storage = tempStorage;
+    //set this._storage equal to new storage
+  this._storage = tempStorage;  /*else {
+    var newLimit = this._limit / 2;
+    var tempStorage = LimitedArray(newLimit);
+    for ( var i = 0; i < this._limit; i++) {
+      if (this._storage())
+    }
+  }*/
 };
 
 //O(1)
@@ -85,6 +94,9 @@ HashTable.prototype.remove = function(k) {
       }
     }
   });
+  if (this.size / this._limit < 0.5) {
+    this.resize('smaller');
+  }
 };
 
 
