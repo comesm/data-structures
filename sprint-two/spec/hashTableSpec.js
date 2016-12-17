@@ -33,6 +33,7 @@ describe('hashTable', function() {
   it('should not contain values that were removed', function() {
     hashTable.insert('Steven', 'Tyler');
     hashTable.remove('Steven');
+
     expect(hashTable.retrieve('Steven')).to.equal(undefined);
   });
 
@@ -84,7 +85,7 @@ describe('hashTable', function() {
     hashTable.remove('Steven');
     hashTable.remove('John');
     hashTable.remove('Mr.');
-    debugger;
+    //debugger;
     expect(hashTable._limit).to.equal(8);
   });
 });

@@ -75,12 +75,16 @@ HashTable.prototype.resize = function( resizeValue ) {
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var result = this._storage.get(index);
+  if(result !== undefined) {
+
+  
   for ( var i = 0; i < result.length; i++) {
     var tuple = result[i];
     if (tuple[0] === k) {
       return tuple[1];
     }
   }
+}
 };
 //O(n)
 HashTable.prototype.remove = function(k) {
